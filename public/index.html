@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!--
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="underscore-min.js"></script>  
+
+    -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="fabric.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.2/fabric.min.js"></script>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->    
+  </head>
+  <body>
+  
+  <canvas id="target" width="800px" height="400px" style="margin: auto"></canvas>
+  
+  <script>
+  
+  $(document).ready(function(){
+      
+      var mask = new Image(), bg = new Image();
+      //var mDf = $.Deferred(), bgDf = $.Deferred();
+            
+      mask.src = "mask2.png";
+      bg.src = "kanye4.jpg";
+      
+      // mask.addEventListener("load", function(){ mDf.resolve(this); });
+      // bg.addEventListener("load", function(){ bgDf.resolve(this); });
+      
+      var canvas = document.createElement("canvas"), ctx = canvas.getContext('2d');
+      var target = document.getElementById("target"), targetCtx = target.getContext('2d');
+      
+      mask.addEventListener('load', function() {    
+        var l = (bg.width / 2) - (mask.width / 2), t = (bg.height / 2) - (mask.height / 2);
+        
+        canvas.width = bg.width;
+        canvas.height = bg.height;
+        
+        ctx.drawImage(mask, l, t);
+        ctx.globalCompositeOperation = "source-in";
+        ctx.drawImage(bg, 0, 0);
+                
+        var imageData = ctx.getImageData(l, t, mask.width, mask.height);                                       
+        targetCtx.putImageData(imageData, 50, 50);  
+      });
+  });
+  
+  </script>
+  
+  </body>
+</html>
