@@ -1,6 +1,6 @@
 const mask = new Image(), background = new Image(), test =new Image();
     
-mask.src = "./masks/mask4.png";
+mask.src = "./masks/mask3.png";
 background.src = "./images/kanye4.jpg";
 
 //var test = new Image();
@@ -13,6 +13,14 @@ test.src = './images/grass_texture.jpg';
 
 const canvas = document.createElement("canvas"), ctx = canvas.getContext('2d');
 const target = document.getElementById("target"), targetCtx = target.getContext('2d');
+
+mask.width = target.width;
+mask.height = target.height;
+background.width = target.width;
+background.height = target.height;
+test.width = target.width;
+test.height = target.height;
+
 
 function call() {
     createImageMask(mask, background);
@@ -27,7 +35,7 @@ function createImageMask(mask, image) {
     
     ctx.drawImage(mask, l, t);
     ctx.globalCompositeOperation = "source-in";
-    ctx.drawImage(image, 0, 0);
+    ctx.drawImage(image, l, t);
             
     const imageData = ctx.getImageData(l, t, mask.width, mask.height);                                       
     targetCtx.putImageData(imageData, 50, 50); 
