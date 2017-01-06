@@ -1,6 +1,6 @@
 const mask = new Image(), background = new Image(), test =new Image();
     
-mask.src = "./masks/mask2.png";
+mask.src = "./masks/mask4.png";
 background.src = "./images/kanye4.jpg";
 
 //var test = new Image();
