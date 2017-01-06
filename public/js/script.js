@@ -4,7 +4,7 @@ mask.src = "./masks/mask3.png";
 background.src = "./images/kanye4.jpg";
 
 //var test = new Image();
-test.src = './images/grass_texture.jpg';
+test.src = './images/hires.jpg';
 
 // const mask = "./masks/mask2.png";
 // const image.src = "./images/kanye4.jpg";
