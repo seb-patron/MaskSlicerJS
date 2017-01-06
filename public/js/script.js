@@ -1,9 +1,10 @@
-var mask = new Image(), background = new Image();
+const mask = new Image(), background = new Image(), test =new Image();
     
 mask.src = "./masks/mask2.png";
 background.src = "./images/kanye4.jpg";
 
-var test = './images/kanye1.jpg';
+//var test = new Image();
+test.src = './images/grass_texture.jpg';
 
 // const mask = "./masks/mask2.png";
 // const image.src = "./images/kanye4.jpg";
@@ -18,14 +19,15 @@ function call() {
 }
     
 function createImageMask(mask, image) {
-    const l = (background.width / 2) - (mask.width / 2), t = (background.height / 2) - (mask.height / 2);
+    //centers image to be masked
+    const l = (image.width / 2) - (mask.width / 2), t = (image.height / 2) - (mask.height / 2);
     
-    canvas.width = background.width;
-    canvas.height = background.height;
+    canvas.width = image.width;
+    canvas.height = image.height;
     
     ctx.drawImage(mask, l, t);
     ctx.globalCompositeOperation = "source-in";
-    ctx.drawImage(background, 0, 0);
+    ctx.drawImage(image, 0, 0);
             
     const imageData = ctx.getImageData(l, t, mask.width, mask.height);                                       
     targetCtx.putImageData(imageData, 50, 50); 
